@@ -1,7 +1,7 @@
 require 'dashing'
 
 require 'dotenv'
-Dotenv.load
+Dotenv.load unless ENV['RACK_ENV'] == 'production'
 
 configure do
   set :auth_token, 'YOUR_AUTH_TOKEN'
