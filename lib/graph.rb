@@ -1,10 +1,8 @@
 # Class for handling graphs
 class Graph
-  POINTS = 10 # Nb of points
-
-  def initialize
-    @points = (1..POINTS).map{|x| {:x => x, :y => 0} }
-    @last_x = POINTS
+  def initialize(points = 10)
+    @points = (1..points).map{|x| {:x => x, :y => 0} }
+    @last_x = points
   end
 
   def push(value)
