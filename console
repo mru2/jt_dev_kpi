@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'dashing'
+require 'pry'
+
+require 'dotenv'
+Dotenv.load
+
+pry
