@@ -1,7 +1,7 @@
 # Store values for RPM and response time in order to send graph points
 # Defined out of the scheduler so they are persisted between polls
-rpm = Graph.new
-response_time = Graph.new
+rpm = Graph.new(60) # 60 points, 1 per minute => 1 hour history
+response_time = Graph.new(60)
 
 SCHEDULER.every '1m', first_in: 0 do
 

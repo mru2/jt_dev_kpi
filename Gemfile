@@ -20,3 +20,9 @@ gem 'newrelic_api'
 
 # Formatting helpers
 gem 'activesupport'
+
+# Watir
+gem 'watir'
+gem 'selenium-webdriver'
+gem 'headless'
+gem 'watir-scroll'
