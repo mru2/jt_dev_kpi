@@ -13,11 +13,23 @@ $(function() {
   <ul>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="newrelic_cpu" data-view="Meter" data-title="CPU" data-min="0" data-max="100"></div>
+      <div data-id="cpu_load" data-view="Meter" data-title="CPU" data-min="0" data-max="100" data-suffix="%"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="newrelic_memory" data-view="Meter" data-title="RAM" data-min="0" data-max="100"></div>
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="memory_usage" data-view="Meter" data-title="RAM" data-min="0" data-max="100" data-suffix="%"></div>
+    </li>
+
+    <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="error_rate" data-view="Meter" data-title="500s" data-min="0" data-max="100" data-suffix="%"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="requests_per_minute" data-view="Graph" data-title="Load" data-suffix=" rpm"></div>
+    </li>
+
+    <li data-row="2" data-col="2" data-sizex="2" data-sizey="1">
+      <div data-id="average_response_time" data-view="Graph" data-title="Response Time" data-suffix=" ms"></div>
     </li>
 
 
