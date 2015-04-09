@@ -32,10 +32,12 @@ class Sidekiq
       acc
     end
 
-    # Kill the browser
-    browser.kill
-
     counts
+  ensure
+    # Kill the browser
+    browser && browser.kill
   end
+
+
 
 end

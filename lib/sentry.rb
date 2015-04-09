@@ -25,13 +25,24 @@ class Sentry
 
     # Fetch the top 5 errors
     divs = browser.divs(css: '.group.level-error:not(.seen)').to_a.first(5)
+    return nil if divs.empty?
 
-    binding.pry
+    errors = divs.map do |div|
+      counts = div.element(css: '.count').text
+      message = div.element(css: 'p.message').text
+      line = div.element(css: 'h3').text
+      {
+        message: message,
+        line: line,
+        count: count
+      }
+    end
 
   rescue => e
-
-    "None"
-
+    return :failure
+  ensure
+    # Kill the browser
+    browser && browser.kill
   end
 
 end
