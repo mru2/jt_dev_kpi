@@ -17,8 +17,10 @@ vim .env
 
 Run the server
 ```
-bundle exec dashing start
+foreman start
 ```
+
+Your server will be running on **[http://localhost:3030](http://localhost:3030)**
 
 Deploy
 ```

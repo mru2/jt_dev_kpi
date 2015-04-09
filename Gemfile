@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
+ruby '2.1.5'
 
 gem 'dashing'
 
-## Remove this if you don't need a twitter widget.
-gem 'twitter', '>= 5.9.0'
+# Env configuration
+gem 'dotenv'
+gem 'foreman'
+
+# HTTP calls
+gem 'httparty'
+
+# NewRelic stats
+gem 'activeresource'
+gem 'newrelic_api'
