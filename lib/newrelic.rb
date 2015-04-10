@@ -27,7 +27,7 @@ class NewRelic
 
   # Percent CPU usage on all cores
   def percent_cpu
-    (metrics['CPU'] / 8).round
+    (metrics['CPU'] / 12).round
   end
 
   # Percent memory usage
