@@ -8,9 +8,6 @@ gem 'dashing'
 gem 'dotenv'
 gem 'foreman'
 
-# Console
-gem 'pry'
-
 # HTTP calls
 gem 'httparty'
 
@@ -21,8 +18,10 @@ gem 'newrelic_api'
 # Formatting helpers
 gem 'activesupport'
 
-# Watir
-gem 'watir'
-gem 'selenium-webdriver'
-gem 'headless'
-gem 'watir-scroll'
+# Crawling
+gem 'mechanize'
+
+group :development, :test do
+  # Console
+  gem 'pry'
+end

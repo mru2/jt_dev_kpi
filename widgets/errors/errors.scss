@@ -33,23 +33,19 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   .line {
     display: block;
     margin: 1em 20px;
+    text-align: left;
   }
 
   .count {
     font-size: 3em;
     line-height: 1;
     display: inline-block;
-    float: left;
+    width: 20%;
   }
 
-  .message{
-    font-size: 1.6em;
-    line-height: 1;
-    float: right;
+  .details {
+    width: 80%;
+    display: inline-block;
   }
 
-  .line {
-    margin-top: 0.4em;
-    float: right;
-  }
 }

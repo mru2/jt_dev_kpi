@@ -2,7 +2,11 @@
 # Manually crawl the backend via watir, no API and easier for sign-in
 class Sidekiq
 
-  def initialize
+  require 'mechanize'
+
+  def initialize(login, password)
+    @login = login
+    @password = password
   end
 
   def metrics
@@ -12,32 +16,26 @@ class Sidekiq
   private
 
   def get_metrics
-    browser = Browser.new
+    browser = Mechanize.new
 
     # Sign in
-    browser.goto('http://www.jobteaser.com/fr/backend/users/sign_in')
-    browser.text_field(id: 'user_email').set ENV['JOBTEASER_LOGIN']
-    browser.text_field(id: 'user_password').set ENV['JOBTEASER_PASSWORD']
-    browser.input(type: 'submit').click
+    browser.get('http://www.jobteaser.com/fr/backend/users/sign_in') do |login_page|
+      login_form = login_page.form_with(action: '/fr/backend/users/sign_in')
+      login_form['user[email]'] = @login
+      login_form['user[password]'] = @password
+      login_form.submit
+    end
 
     # Go to sidekiq admin page
-    browser.goto('http://www.jobteaser.com/backend/sidekiq')
+    sidekiq_dashboard = browser.get('http://www.jobteaser.com/backend/sidekiq')
 
     # Fetch counts
     types = [:processed, :failed, :busy, :enqueued, :retries, :scheduled, :dead]
     counts = types.inject({}) do |acc, type|
-      innerhtml =  browser.element(css: ".#{type} .count").text
+      innerhtml =  sidekiq_dashboard.search(".#{type} .count").text
       count = innerhtml.gsub(/,/,'').to_i # Handle numbers like 20,122
       acc[type] = count
       acc
     end
-
-    counts
-  ensure
-    # Kill the browser
-    browser && browser.kill
   end
-
-
-
 end
